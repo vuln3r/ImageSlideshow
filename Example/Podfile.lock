@@ -15,7 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - Alamofire (4.9.1)
-  - AlamofireImage (3.6.0):
+  - AlamofireImage (4.0.3):
     - Alamofire (~> 4.9)
   - ImageSlideshow (1.8.1):
     - ImageSlideshow/Core (= 1.8.1)
