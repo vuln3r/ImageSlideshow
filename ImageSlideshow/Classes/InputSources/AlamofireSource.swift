@@ -50,32 +50,21 @@ public class AlamofireSource: NSObject, InputSource {
     }
 
     public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
-        if token != nil {
-            var urlRequest = URLRequest(url: self.url)
+        var urlRequest = URLRequest(url: url)
+
+        if authToken != nil {
             urlRequest.setValue("Bearer " + authToken, forHTTPHeaderField: "Authorization")
-            imageView.af_setImage(withURLRequest: urlRequest, placeholderImage: self.placeholder, filter: nil, progress: nil) { [weak self] response in
-                switch response.result {
-                case .success(let image):
-                    callback(image)
-                case .failure:
-                    if let strongSelf = self {
-                        callback(strongSelf.placeholder)
-                    } else {
-                        callback(nil)
-                    }
-                }
-            }
-        } else {
-            imageView.af_setImage(withURL: self.url, placeholderImage: self.placeholder, filter: nil, progress: nil) { [weak self] response in
-                switch response.result {
-                case .success(let image):
-                    callback(image)
-                case .failure:
-                    if let strongSelf = self {
-                        callback(strongSelf.placeholder)
-                    } else {
-                        callback(nil)
-                    }
+        }
+
+        imageView.af_setImage(withURLRequest: urlRequest, placeholderImage: placeholder, filter: nil, progress: nil) { [weak self] response in
+            switch response.result {
+            case .success(let image):
+                callback(image)
+            case .failure:
+                if let strongSelf = self {
+                    callback(strongSelf.placeholder)
+                } else {
+                    callback(nil)
                 }
             }
         }
