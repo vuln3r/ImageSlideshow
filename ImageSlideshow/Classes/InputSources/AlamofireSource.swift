@@ -29,7 +29,7 @@ public class AlamofireSource: NSObject, InputSource {
     /// - parameter placeholder: a placeholder used before image is loaded
     public init(url: URL, token: String? = nil, placeholder: UIImage? = nil) {
         self.url = url
-        self.token = token
+        self.authToken = token
         self.placeholder = placeholder
         super.init()
     }
@@ -41,7 +41,7 @@ public class AlamofireSource: NSObject, InputSource {
     public init?(urlString: String, token: String? = nil, placeholder: UIImage? = nil) {
         if let validUrl = URL(string: urlString) {
             self.url = validUrl
-            self.token = token
+            self.authToken = token
             self.placeholder = placeholder
             super.init()
         } else {
@@ -52,7 +52,7 @@ public class AlamofireSource: NSObject, InputSource {
     public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         if token != nil {
             var urlRequest = URLRequest(url: self.url)
-            urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+            urlRequest.setValue("Bearer " + authToken, forHTTPHeaderField: "Authorization")
             imageView.af_setImage(withURLRequest: urlRequest, placeholderImage: self.placeholder, filter: nil, progress: nil) { [weak self] response in
                 switch response.result {
                 case .success(let image):
