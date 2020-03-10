@@ -50,7 +50,7 @@ public class AlamofireSource: NSObject, InputSource {
     public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
         var urlRequest = URLRequest(url: url)
 
-        if authToken != nil {
+        if let authToken = authToken {
             urlRequest.setValue("Bearer " + authToken, forHTTPHeaderField: "Authorization")
         }
 
