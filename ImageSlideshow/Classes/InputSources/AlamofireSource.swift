@@ -7,14 +7,12 @@
 //
 
 import UIKit
-#if SWIFT_PACKAGE
 import ImageSlideshow
-#endif
 import Alamofire
 import AlamofireImage
 
 /// Input Source to image using Alamofire
-@objcMembers
+//@objcMembers
 public class AlamofireSource: NSObject, InputSource {
     /// url to load
     public var url: URL
