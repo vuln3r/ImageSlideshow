@@ -41,9 +41,7 @@ let package = Package(
                 "Classes/Core/SwiftSupport.swift",
                 "Classes/Core/UIImage+AspectFit.swift",
                 "Classes/Core/UIImageView+Tools.swift",
-                "Classes/Core/ZoomAnimatedTransitioning.swift",
-                "Assets/ic_cross_white@2x.png",
-                "Assets/ic_cross_white@3x.png",
+                "Classes/Core/ZoomAnimatedTransitioning.swift"
             ]),
         .target(
             name: "ImageSlideshowAlamofire",
